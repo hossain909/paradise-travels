@@ -1,0 +1,9 @@
+form {
+  background-color: #fff;
+  width: 400px;
+  margin: 0 auto;
+}
+form input{
+  display: block;
+  width: 100%;;
+}
