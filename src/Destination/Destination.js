@@ -43,15 +43,23 @@ const Destination = () => {
       <Row  className="mt-5" >
         <Col  md={4}>
           {myDestination.from && myDestination.to 
-          ? <div>
-              <p>{myDestination.from}</p>
-              <p>To</p>
-              <p>{myDestination.to}</p>
-              <div className="d-flex">
+          ? <div style={{ backgroundColor: "#f8f5f1"}}>
+              <div style={{color: "#fff", backgroundColor: "#f14668",borderRadius: "10px", padding:"5px 5px 0"}}>
+                <h4 >{myDestination.from}</h4>
+                <h5 style={{color: "#000"}}>To</h5>
+                <h4 >{myDestination.to}</h4>
+              </div>
+              <div className="d-flex pl-2">
                 <Image className="mr-3" height="50px" variant="top" src={destination.image} alt=""></Image>
-                <h6 className="mt-3 ml-3">{transportName}</h6>
-                <Image className="mt-3 ml-3" height="25px" src={people}></Image><span className="mt-2">2</span>
-                <h6 className="mt-3 ml-3">$50</h6>
+                <h6 className="mt-3 ml-2">{transportName}</h6>
+                <Image className="mt-3 ml-2" height="25px" src={people}></Image><span className="mt-2 ">2</span>
+                <h6 className="mt-3 ml-5">$50</h6>
+              </div>
+              <div className="d-flex pl-2">
+                <Image className="mr-3" height="50px" variant="top" src={destination.image} alt=""></Image>
+                <h6 className="mt-3 ml-2">{transportName}</h6>
+                <Image className="mt-3 ml-2" height="25px" src={people}></Image><span className="mt-2 ">1</span>
+                <h6 className="mt-3 ml-5">$30</h6>
               </div>
             </div>
           : <form>
@@ -62,13 +70,11 @@ const Destination = () => {
               <input onClick={handleDestination} type="button" value="Search" />
             </form>
           }
-          
         </Col>
         <Col md={8}>
           <Image align="right" className="w-75" fluid src={mapImg}></Image>
         </Col>
       </Row>
-      {/* <Image height="50px" variant="top" src={myDestination.image} alt=""></Image> */}
     </Container>
   );
 };
