@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 const TransportDetail = ({ transport}) => {
   const { name, image } = transport
-  console.log(typeof image);
   const cardStyle = {
     width: '14rem',
     margin: "auto",

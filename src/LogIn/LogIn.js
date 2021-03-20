@@ -22,7 +22,6 @@ const LogIn = () => {
     success: false
   })
   const [loggedInUser, setLoggedInUser] = useContext(UserContext)
-  // console.log(loggedInUser);
   let history = useHistory();
   let location = useLocation();
   let { from } = location.state || { from: { pathname: "/" } };
@@ -71,7 +70,6 @@ const LogIn = () => {
           setLoggedInUser(newUserInfo)
           history.replace(from)
           updateUserInfo(user.name)
-          // console.log("signed in user", res.user);
         })
         .catch((error) => {
           const newUserInfo = { ...user }
@@ -91,7 +89,6 @@ const LogIn = () => {
           setUser(newUserInfo)
           setLoggedInUser(newUserInfo)
           history.replace(from)
-          console.log("signed in user", res.user);
 
         })
         .catch((error) => {
@@ -103,7 +100,7 @@ const LogIn = () => {
     }
     e.preventDefault()
   }
-
+//=================== Update UserInfo =====================/
   const updateUserInfo = (name) => {
     const user = firebase.auth().currentUser;
     user.updateProfile({
@@ -117,8 +114,6 @@ const LogIn = () => {
 
   return (
     <div style={{ textAlign: "center", marginTop: "10px" }}>
-      {/* <input onChange={() => setNewUser(!newUser)} type="checkbox" name="newUser" />
-      <label htmlFor="newUser">Create an account</label> */}
       <form onSubmit={handleSubmit}>
         {newUser && <input onBlur={handleBlur} type="text" name="name" placeholder="Name" required/>}<br />
         <input onBlur={handleBlur} type="email" name="email" placeholder="Email" required /><br />
@@ -130,8 +125,8 @@ const LogIn = () => {
       <button onClick={googleSignIn}><Image width="20px" src={google}></Image>Continue with Google</button><br />
 
       {user.success
-        ? <h4 style={{ color: "green" }}>User {newUser ? "Created" : "Logged In"} Successfully</h4>
-        : <h4 style={{ color: "red" }}>{user.error}</h4>
+        ? <h5 style={{ color: "green",marginTop: "10px" }}>User {newUser ? "Created" : "Logged In"} Successfully</h5>
+        : <h5 style={{ color: "red",marginTop: "10px" }}>{user.error}</h5>
       }
     </div>
   );

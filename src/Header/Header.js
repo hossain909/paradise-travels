@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <Container>
       <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="#home">City Riders</Navbar.Brand>
+        <Navbar.Brand href="#home">Paradise Travel</Navbar.Brand>
         <Nav className="ml-auto">
           <Nav.Link className="mr-3" as={Link} to="/">Home</Nav.Link>
           <Nav.Link className="mr-3" as={Link} to={"/destination/" + Bike}>Destination</Nav.Link>

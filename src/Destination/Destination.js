@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react';
 import { Col, Container, Image, Row } from 'react-bootstrap';
 import { useParams } from 'react-router';
 import { UserContext } from '../App';
+import mapImg from "../fakeData/Images/map.jpg";
+import people from "../fakeData/Images/peopleicon.png";
 import fakeData from "../fakeData/transportData";
 import "./Destination.css";
 
@@ -38,14 +40,18 @@ const Destination = () => {
   }
   return (
     <Container>
-      <Row className="mt-5">
-        <Col md={4}>
+      <Row  className="mt-5" >
+        <Col  md={4}>
           {myDestination.from && myDestination.to 
           ? <div>
               <p>{myDestination.from}</p>
               <p>{myDestination.to}</p>
-              <h3>{transportName}</h3>
-              <Image height="50px" variant="top" src={destination.image} alt=""></Image>
+              <div className="d-flex">
+                <Image className="mr-3" height="50px" variant="top" src={destination.image} alt=""></Image>
+                <h6 className="mt-2" >{transportName}</h6>
+                <Image className="mt-1 ml-2" height="25px" src={people}></Image><span className="mt-1">2</span>
+                <h6 className="mt-2 ml-2">Cost: $50</h6>
+              </div>
             </div>
           : <form>
               <label htmlFor="Pick From">Pick From</label>
@@ -58,7 +64,7 @@ const Destination = () => {
           
         </Col>
         <Col md={8}>
-          <Image className="w-75 ml-5" fluid src="https://res.cloudinary.com/springboard-images/image/upload/q_auto,f_auto,fl_lossy/wordpress-india/2019/10/google-maps.jpg"></Image>
+          <Image align="right" className="w-75" fluid src={mapImg}></Image>
         </Col>
       </Row>
       {/* <Image height="50px" variant="top" src={myDestination.image} alt=""></Image> */}
