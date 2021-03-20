@@ -1,9 +1,9 @@
 const firebaseConfig = {
-  apiKey: "AIzaSyAcwoHQAvFmpJSraEbo7OjsSonEoMig1EU",
-  authDomain: "urban-city-riders.firebaseapp.com",
-  projectId: "urban-city-riders",
-  storageBucket: "urban-city-riders.appspot.com",
-  messagingSenderId: "940406738792",
-  appId: "1:940406738792:web:2249d62ea6aa5d6d05d0dd"
+  apiKey: "AIzaSyACmSKb1kqx-26P7l8vq2WRAfXUhLOechY",
+  authDomain: "paradise-travels-bd.firebaseapp.com",
+  projectId: "paradise-travels-bd",
+  storageBucket: "paradise-travels-bd.appspot.com",
+  messagingSenderId: "1013835045060",
+  appId: "1:1013835045060:web:bda6e8ca9a97c693bad191"
 };
 export default firebaseConfig
