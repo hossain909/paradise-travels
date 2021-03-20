@@ -5,7 +5,7 @@ import { Image } from "react-bootstrap";
 import { useHistory, useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { UserContext } from "../App";
-import google from "../fakeData/Images/google.png";
+import google from "../fakeData/images/google.png";
 import firebaseConfig from "../firebase.config";
 import "./Login.css";
 if(!firebase.apps.length){

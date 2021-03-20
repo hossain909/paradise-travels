@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Col, Container, Image, Row } from 'react-bootstrap';
 import { useParams } from 'react-router';
 import { UserContext } from '../App';
-import mapImg from "../fakeData/Images/map.jpg";
+import mapImg from "../fakeData/Images/Map.png";
 import people from "../fakeData/Images/peopleicon.png";
 import fakeData from "../fakeData/transportData";
 import "./Destination.css";
