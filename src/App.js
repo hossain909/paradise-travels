@@ -15,10 +15,13 @@ import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 
 export const UserContext = createContext()
+export const TransportContext = createContext()
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({})
+  const [transportName, setTransportName] = useState("")
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
+      <TransportContext.Provider value={[transportName, setTransportName]}>
       <Router>
         <Header></Header>
         <Switch>
@@ -31,11 +34,12 @@ function App() {
           <Route path="/login">
             <LogIn></LogIn>
           </Route>
-          <PrivateRoute path="/destination">
+          <PrivateRoute path="/destination/:transportName">
             <Destination></Destination>
           </PrivateRoute>
         </Switch>
       </Router>
+      </TransportContext.Provider>
     </UserContext.Provider>
   );
 }

@@ -1,5 +1,16 @@
 form{
-  width: 200px;
-  background-color: azure;
-  margin-top: 30px;
+  background-color: #9f9f9f;
+  width: 150px;
+  margin: 0 auto;
+  padding: 20px 35px;
+}
+input{
+  padding: 5px 2px;
+  border: none;
+}
+input[type="button"]{
+  background-color: salmon;
+  border: none;
+  padding: 5px;
+  margin-top: 10px;
 }

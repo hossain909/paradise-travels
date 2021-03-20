@@ -1,9 +1,16 @@
 form {
-  background-color: #fff;
+  background-color: #fabd6e;
   width: 400px;
   margin: 0 auto;
+  padding: 20px 35px;
 }
 form input{
   display: block;
   width: 100%;;
+}
+input[type="submit"]{
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  padding: 8px;
 }

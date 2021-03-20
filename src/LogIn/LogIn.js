@@ -3,9 +3,10 @@ import "firebase/auth";
 import React, { useContext, useState } from 'react';
 import { Image } from "react-bootstrap";
 import { useHistory, useLocation } from "react-router";
+import { Link } from "react-router-dom";
 import { UserContext } from "../App";
+import google from "../fakeData/Images/google.png";
 import firebaseConfig from "../firebase.config";
-import google from "../Images/google.png";
 import "./Login.css";
 if(!firebase.apps.length){
   firebase.initializeApp(firebaseConfig)
@@ -21,6 +22,7 @@ const LogIn = () => {
     success: false
   })
   const [loggedInUser, setLoggedInUser] = useContext(UserContext)
+  // console.log(loggedInUser);
   let history = useHistory();
   let location = useLocation();
   let { from } = location.state || { from: { pathname: "/" } };
@@ -68,7 +70,8 @@ const LogIn = () => {
           setUser(newUserInfo)
           setLoggedInUser(newUserInfo)
           history.replace(from)
-          console.log("signed in user", res.user);
+          updateUserInfo(user.name)
+          // console.log("signed in user", res.user);
         })
         .catch((error) => {
           const newUserInfo = { ...user }
@@ -80,12 +83,16 @@ const LogIn = () => {
     if (!newUser && user.email && user.password) {
       firebase.auth().signInWithEmailAndPassword(user.email, user.password)
         .then(res => {
-          const newUserInfo = { ...user }
+          var { displayName, email } = res.user;
+          const signedInUser = { name: displayName, email: email }
+          const newUserInfo = signedInUser
           newUserInfo.success = true
           newUserInfo.error = ""
           setUser(newUserInfo)
           setLoggedInUser(newUserInfo)
           history.replace(from)
+          console.log("signed in user", res.user);
+
         })
         .catch((error) => {
           const newUserInfo = { ...user }
@@ -96,17 +103,32 @@ const LogIn = () => {
     }
     e.preventDefault()
   }
+
+  const updateUserInfo = (name) => {
+    const user = firebase.auth().currentUser;
+    user.updateProfile({
+      displayName: name,
+    }).then(function () {
+      console.log("Updated info updated successfully!");
+    }).catch(function (error) {
+      console.log(error);
+    });
+  }
+
   return (
     <div style={{ textAlign: "center", marginTop: "10px" }}>
-      <button onClick={googleSignIn}><Image  width="20px" src={google}></Image>Continue with Google</button><br />
-      <input onChange={() => setNewUser(!newUser)} type="checkbox" name="newUser" />
-      <label htmlFor="newUser">New User Sing Up</label>
+      {/* <input onChange={() => setNewUser(!newUser)} type="checkbox" name="newUser" />
+      <label htmlFor="newUser">Create an account</label> */}
       <form onSubmit={handleSubmit}>
-        {newUser && <input onBlur={handleBlur} type="text" name="name" placeholder="Name" />}<br />
+        {newUser && <input onBlur={handleBlur} type="text" name="name" placeholder="Name" required/>}<br />
         <input onBlur={handleBlur} type="email" name="email" placeholder="Email" required /><br />
         <input onBlur={handleBlur} type="password" name="password" placeholder="Password" required /><br />
         <input  type="submit" value={newUser ? "Create an account" : "Log In"} />
+        <p>{newUser ? "Already have an account?" : "Don't have an account?"} <Link onClick={() => setNewUser(!newUser)} > {newUser ? "Login" :"Create an account"} </Link></p>
       </form>
+      <h5>Or</h5>
+      <button onClick={googleSignIn}><Image width="20px" src={google}></Image>Continue with Google</button><br />
+
       {user.success
         ? <h4 style={{ color: "green" }}>User {newUser ? "Created" : "Logged In"} Successfully</h4>
         : <h4 style={{ color: "red" }}>{user.error}</h4>
