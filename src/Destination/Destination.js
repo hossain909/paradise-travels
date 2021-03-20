@@ -45,12 +45,13 @@ const Destination = () => {
           {myDestination.from && myDestination.to 
           ? <div>
               <p>{myDestination.from}</p>
+              <p>To</p>
               <p>{myDestination.to}</p>
-              <div className="d-flex">
+              <div style={{border: "1px solid black"}} className="d-flex">
                 <Image className="mr-3" height="50px" variant="top" src={destination.image} alt=""></Image>
-                <h6 className="mt-2" >{transportName}</h6>
-                <Image className="mt-1 ml-2" height="25px" src={people}></Image><span className="mt-1">2</span>
-                <h6 className="mt-2 ml-2">Cost: $50</h6>
+                <h6 className="mt-3 ml-3">{transportName}</h6>
+                <Image className="mt-3 ml-3" height="25px" src={people}></Image><span className="mt-2">2</span>
+                <h6 className="mt-3 ml-3">$50</h6>
               </div>
             </div>
           : <form>
