@@ -30,4 +30,4 @@ To run this project, install it locally using npm:
 
 
 ## Live Site
-[Firebase](https://urban-city-riders.web.app/)
+[Firebase](https://paradise-travels-bd.web.app/)
