@@ -8,7 +8,7 @@ import { UserContext } from "../App";
 import google from "../fakeData/Images/google.png";
 import firebaseConfig from "../firebase.config";
 import "./Login.css";
-if(!firebase.apps.length){
+if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig)
 }
 const LogIn = () => {
@@ -63,7 +63,7 @@ const LogIn = () => {
     if (newUser && user.email && user.password) {
       firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
         .then(res => {
-          const newUserInfo = { ...user }
+          const newUserInfo = {...user}
           newUserInfo.success = true
           newUserInfo.error = ""
           setUser(newUserInfo)
@@ -100,7 +100,7 @@ const LogIn = () => {
     }
     e.preventDefault()
   }
-//=================== Update UserInfo =====================/
+  //=================== Update UserInfo =====================/
   const updateUserInfo = (name) => {
     const user = firebase.auth().currentUser;
     user.updateProfile({
@@ -115,22 +115,20 @@ const LogIn = () => {
   return (
     <div style={{ textAlign: "center", marginTop: "10px" }}>
       <form onSubmit={handleSubmit}>
-        {newUser && <input onBlur={handleBlur} type="text" name="name" placeholder="Name" required/>}<br />
+        {newUser && <input onBlur={handleBlur} type="text" name="name" placeholder="Name" required />}<br />
         <input onBlur={handleBlur} type="email" name="email" placeholder="Email" required /><br />
         <input onBlur={handleBlur} type="password" name="password" placeholder="Password" required /><br />
-        <input  type="submit" value={newUser ? "Create an account" : "Log In"} />
-        <p>{newUser ? "Already have an account?" : "Don't have an account?"} <Link onClick={() => setNewUser(!newUser)} > {newUser ? "Login" :"Create an account"} </Link></p>
+        <input type="submit" value={newUser ? "Create an account" : "Log In"} />
+        <p>{newUser ? "Already have an account?" : "Don't have an account?"} <Link onClick={() => setNewUser(!newUser)} > {newUser ? "Login" : "Create an account"} </Link></p>
       </form>
       <h5>Or</h5>
       <button onClick={googleSignIn}><Image width="20px" src={google}></Image>Continue with Google</button><br />
 
       {user.success
-        ? <h5 style={{ color: "green",marginTop: "10px" }}>User {newUser ? "Created" : "Logged In"} Successfully</h5>
-        : <h5 style={{ color: "red",marginTop: "10px" }}>{user.error}</h5>
+        ? <h5 style={{ color: "green", marginTop: "10px" }}>User {newUser ? "Created" : "Logged In"} Successfully</h5>
+        : <h5 style={{ color: "red", marginTop: "10px" }}>{user.error}</h5>
       }
     </div>
   );
 };
-
-
 export default LogIn;
